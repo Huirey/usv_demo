@@ -1,0 +1,4 @@
+<launch>
+    <arg name="filename" value="$(find usv_nav)/map/nav" />
+    <node name="map_save" pkg="map_server" type="map_saver" args="-f $(arg filename)" />
+</launch>

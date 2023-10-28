@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!-- World containing sydneyregatta model and some course challenges -->
+<sdf version="1.6" xmlns:xacro="http://ros.org/wiki/xacro">
+  <world name="usv_world">
+    <xacro:include filename="$(find vrx_gazebo)/worlds/sydneyregatta.xacro" />
+    <xacro:sydneyregatta />
+    <!--Waves-->
+    <xacro:include filename="$(find wave_gazebo)/world_models/ocean_waves/model.xacro"/>
+    <xacro:ocean_waves scale="2.5"/>
+
+    <!--Wind-->
+    <xacro:include filename="$(find vrx_gazebo)/worlds/xacros/usv_wind_plugin.xacro"/>
+    <xacro:usv_wind_gazebo>
+      <wind_objs>
+        <wind_obj>
+          <name>usv</name>
+          <link_name>usv/base_link</link_name>
+          <coeff_vector>.5 .5 .33</coeff_vector>
+        </wind_obj>
+      </wind_objs>
+    </xacro:usv_wind_gazebo>
+
+
+
+<!-- 
+    <include>
+
+      <uri>model://polyform_a3</uri>
+      <pose>-10 2 0 0 0 0</pose>
+    </include> -->
+
+    <!-- <include>
+
+      <uri>model://polyform_a7</uri>
+      <pose>-15 8 0 0 0 0</pose>
+    </include> -->
+
+    <include>
+      <!-- 红色浮标 -->
+      <uri>model://mb_marker_buoy_red</uri>
+      <pose>-15 8 0 0 0 0</pose>
+    </include>
+
+
+  </world>
+</sdf>

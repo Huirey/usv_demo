@@ -1,0 +1,47 @@
+<launch>
+    <!-- 是否使用仿真环境 -->
+    <param name="use_sim_time" value="true"/>
+    <!-- gmapping节点 -->
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" >
+    <!-- 设置雷达话题，话题名称为scan，所以将订阅的话题改为scan -->
+    <!-- 由于默认的是scan，但是却被映射成立scan_base所以删除或者改为 to scan -->
+      <remap from="scan" to="/cora/sensors/lidars/front_lidar/scan"/>
+    <!-- =============关键参数=================== -->
+    <!-- baseframe默认是base_link，所有要修改 -->
+      <param name="base_frame" value="cora/base_link" />
+      <!-- 剩下的使用默认值即可，也可修改 -->
+      <param name="map_frame" value="map"/>
+      <param name="odom_frame" value="cora/odom"/>
+    <!-- ======================================= -->
+      <!-- 地图更新时间 -->
+      <param name="map_update_interval" value="5.0"/>
+      <!-- 雷达最大距离 -->
+      <param name="maxUrange" value="150"/>
+      <param name="sigma" value="0.05"/>
+      <param name="kernelSize" value="1"/>
+      <param name="lstep" value="0.05"/>
+      <param name="astep" value="0.05"/>
+      <param name="iterations" value="5"/>
+      <param name="lsigma" value="0.075"/>
+      <param name="ogain" value="3.0"/>
+      <param name="lskip" value="0"/>
+      <param name="srr" value="0.1"/>
+      <param name="srt" value="0.2"/>
+      <param name="str" value="0.1"/>
+      <param name="stt" value="0.2"/>
+      <param name="linearUpdate" value="1.0"/>
+      <param name="angularUpdate" value="0.5"/>
+      <param name="temporalUpdate" value="3.0"/>
+      <param name="resampleThreshold" value="0.5"/>
+      <param name="particles" value="30"/>
+      <param name="xmin" value="-100"/>
+      <param name="ymin" value="-100"/>
+      <param name="xmax" value="100"/>
+      <param name="ymax" value="100"/>
+      <param name="delta" value="0.2"/>
+      <param name="llsamplerange" value="0.01"/>
+      <param name="llsamplestep" value="0.01"/>
+      <param name="lasamplerange" value="0.005"/>
+      <param name="lasamplestep" value="0.005"/>
+    </node>
+</launch>

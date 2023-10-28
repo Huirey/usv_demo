@@ -1,0 +1,48 @@
+# #机器人几何参，如果机器人是圆形，设置 robot_radius,如果是其他形状设置 footprint
+# # 修改1
+footprint: [[-6.1, -1.8], [-6.1, 1.8], [6.1, 1.8], [6.1, -1.8]] #其他形状 以正方形为例，这是四个点的坐标
+
+# obstacle_range: 28 # 用于障碍物探测，比如: 值为 3.0，意味着检测到距离小于 3 米的障碍物时，就会引入代价地图
+# raytrace_range: 30 # 用于清除障碍物，比如：值为 3.5，意味着清除代价地图中 3.5 米以外的障碍物
+
+
+
+
+# #地图类型
+map_type: costmap
+# 障碍物层的参数配置
+obstacle_layer:
+  enabled:              true   # 使能障碍物层；
+  max_obstacle_height:  50 #考虑的最大障碍物高度；
+  origin_z:             0.0
+  z_resolution:         0.2
+  z_voxels:             2
+  unknown_threshold:    15
+  mark_threshold:       0
+  combination_method:   1
+  track_unknown_space:  true    # true 禁止全局路径规划穿越未知区域；
+  obstacle_range: 30   # 添加障碍物范围，一方面考虑激光范围，另外范围越大越耗计算资源；
+  raytrace_range: 35   # 清除障碍物范围；
+  publish_voxel_map: false
+  observation_sources:  scan   # 数据源；
+  scan:
+    {
+    frame_name: cora/front_lidar_link,  # Scan的基坐标；
+    data_type: LaserScan,   # scan数据类型；
+    topic: /cora/sensors/lidars/front_lidar/scan, # scan的话题名称；
+    inf_is_valid: true, # scan的无穷远数据是否有效；
+    marking: true,        # 是否根据scan添加障碍物；
+    clearing: true,       # 是否根据scan清除障碍物；
+    min_obstacle_height: 0.0,    # scan检测到的最小有效障碍物高度；
+    max_obstacle_height: 50} # scan检测到的最大有效障碍物高度；
+  # for debugging only, let's you see the entire voxel grid
+
+  # 膨胀层参数配置
+inflation_layer:
+  enabled:              true  # 是否使能膨胀层；
+  cost_scaling_factor:  1.0  #膨胀层的指数衰减速度，值越小衰减越慢(default: 10)；
+  inflation_radius:     8.0  #最大有效膨胀半径，即安装指数衰减扩张的最大半径，计算障碍物cos函数时使用。
+
+# 静态层参数配置？？
+static_layer:
+  enabled:              true   # 是否使用静态层；

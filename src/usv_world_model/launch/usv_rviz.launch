@@ -1,0 +1,10 @@
+<launch>
+    <arg name="rviz_config" default="$(find usv_world_model)/config/rvizconfig.rviz" />
+    <!-- 启动rviz -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config)"/>
+    <!-- !!由于命名空间，机器人描述参数是/cora/robot_description,需要手动指定-->
+    <!-- 关节状态发布节点 -->
+    <node ns="cora" pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+    <!-- 机器人状态发布节点 -->
+    <node ns="cora" pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+</launch>

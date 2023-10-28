@@ -1,0 +1,9 @@
+<!-- 集成导航相关的launch文件 -->
+
+<launch>
+    <!-- 加载地图服务 -->
+    <include file="$(find usv_nav)/launch/usv_map_server.launch"/>
+    <!-- 发布地图坐标系变换 -->
+    <node name="odom2map" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0  /map /cora/odom"/>
+    <include file="$(find usv_nav)/launch/usv_path.launch"/>
+</launch>
