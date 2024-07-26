@@ -1,6 +1,8 @@
 # usv_demo
 基于VRX平台的水面无人艇(USV)仿真环境，实现无人艇的导航功能
 
+VRX平台的下载与与安装可以参考https://github.com/osrf/vrx/tree/gazebo_classic
+
 ## 简介
 仿真环境基于VRX
 
