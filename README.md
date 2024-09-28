@@ -21,6 +21,11 @@ VRX平台的下载与与安装可以参考https://github.com/osrf/vrx/tree/gazeb
 
 ## 使用方法
 
+下载robot_localization用于融合定位(以noetic版本为例)
+```
+sudo apt install ros-noetic-robot-localization
+```
+
 编译
 ```
 cd usv_demo
