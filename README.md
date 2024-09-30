@@ -31,11 +31,6 @@ sudo apt install ${GAZ} lib${GAZ}-dev ros-${DIST}-gazebo-plugins ros-${DIST}-gaz
 
 ## 使用方法
 
-下载robot_localization用于融合定位(以noetic版本为例)
-```
-sudo apt install ros-noetic-robot-localization
-```
-
 编译
 ```
 cd usv_demo
