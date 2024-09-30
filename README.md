@@ -3,6 +3,16 @@
 
 VRX平台的下载与与安装可以参考https://github.com/osrf/vrx/tree/gazebo_classic
 
+核对或执行下面的命令，防止缺少部分必要库
+
+```
+sudo apt update
+DIST=noetic
+GAZ=gazebo11
+sudo apt install ${GAZ} lib${GAZ}-dev ros-${DIST}-gazebo-plugins ros-${DIST}-gazebo-ros ros-${DIST}-hector-gazebo-plugins ros-${DIST}-joy ros-${DIST}-joy-teleop ros-${DIST}-key-teleop ros-${DIST}-robot-localization ros-${DIST}-robot-state-publisher ros-${DIST}-joint-state-publisher ros-${DIST}-rviz ros-${DIST}-ros-base ros-${DIST}-teleop-tools ros-${DIST}-teleop-twist-keyboard ros-${DIST}-velodyne-simulator ros-${DIST}-xacro ros-${DIST}-rqt ros-${DIST}-rqt-common-plugins
+```
+
+
 ## 简介
 仿真环境基于VRX
 
